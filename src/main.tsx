@@ -2,10 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { RouterProvider } from "react-router-dom";
 
-import App from "./App.tsx";
 import { store } from "./store/index.ts";
 import { theme } from "./theme.ts";
+import router from "./Router.tsx";
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -74,7 +75,7 @@ createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <App />
+        <RouterProvider router={router} />
       </ThemeProvider>
     </Provider>
   </StrictMode>
