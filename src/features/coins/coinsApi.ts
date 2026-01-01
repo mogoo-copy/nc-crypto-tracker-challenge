@@ -1,13 +1,13 @@
 import cpdbApi from "../../api/cpdbApi";
-import type { Coin } from "./types";
+import type { BasicCoin, CoinTickers, DetailCoin } from "./types";
 
 const NICO_URL = "https://ohlcv-api.nomadcoders.workers.dev?coinId=";
 
 const coinsApi = cpdbApi.injectEndpoints({
   endpoints: (builder) => ({
-    getCoins: builder.query<Coin[], void>({
+    getCoins: builder.query<BasicCoin[], void>({
       query: () => "coins",
-      transformResponse: (response: Coin[]) => {
+      transformResponse: (response: BasicCoin[]) => {
         if (!response || !Array.isArray(response)) {
           return [];
         }
@@ -15,7 +15,13 @@ const coinsApi = cpdbApi.injectEndpoints({
       },
       providesTags: ["Coin"],
     }),
+    getCoinInfo: builder.query<DetailCoin, string>({
+      query: (coinId) => `coins/${coinId}`,
+    }),
+    getCoinTickers: builder.query<CoinTickers, string>({
+      query: (coinId) => `tickers/${coinId}`,
+    }),
   }),
 });
 
-export const { useGetCoinsQuery } = coinsApi;
+export const { useGetCoinsQuery, useGetCoinInfoQuery, useGetCoinTickersQuery } = coinsApi;
