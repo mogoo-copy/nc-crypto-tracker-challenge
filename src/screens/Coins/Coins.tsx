@@ -14,7 +14,6 @@ import { useGetCoinsQuery } from "../../features/coins/coinsApi";
 
 function Coins() {
   const { data, isLoading } = useGetCoinsQuery();
-  console.log(data, isLoading);
 
   return (
     <WrapperDiv>
