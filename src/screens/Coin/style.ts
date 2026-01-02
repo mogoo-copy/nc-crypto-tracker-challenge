@@ -6,6 +6,7 @@ export const WrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 export const StatusMessage = styled(WrapperDiv)`
@@ -19,6 +20,7 @@ export const Title = styled.h2`
   position: relative;
   display: flex;
   align-items: center;
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const CoinImg = styled.img`
@@ -31,16 +33,18 @@ export const CoinImg = styled.img`
 export const WrapperCoinDiv = styled.div`
   margin-top: 30px;
   width: 500px;
-  background-color: black;
+  background-color: ${(props) => props.theme.cardColor};
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  border-radius: 15px;
+  padding: 15px;
 `;
 
 export const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: blue;
+  background-color: ${(props) => props.theme.bgColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -49,18 +53,19 @@ export const OverviewItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: ${(props) => props.theme.textColor};
 
   span:first-child {
     font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: ${(props) => props.theme.accentColor};
   }
 `;
 
 export const Description = styled.p`
-  color: white;
+  color: ${(props) => props.theme.subTextColor};
   margin: 20px 0px;
 `;
 
@@ -76,10 +81,10 @@ export const Tab = styled.span`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.bgColor};
   padding: 7px 0px;
   border-radius: 10px;
-  color: white;
+  color: ${(props) => props.theme.textColor};
   a {
     display: block;
   }

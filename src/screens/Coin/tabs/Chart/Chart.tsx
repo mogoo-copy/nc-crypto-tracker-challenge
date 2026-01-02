@@ -4,10 +4,12 @@ import ReactApexChart from "react-apexcharts";
 
 import { WrapperDiv } from "./style";
 import { useGetCoinHistoryQuery } from "../../../../features/coins/coinsApi";
+import { useAppSelector } from "../../../../store/hooks";
 
 function Chart() {
   const { coinId } = useParams();
   const { data, isLoading, isError } = useGetCoinHistoryQuery(coinId ?? skipToken);
+  const { isDarkMode } = useAppSelector((state) => state.theme);
 
   if (!coinId) {
     return <WrapperDiv>Invalid access. Coin ID is missing.</WrapperDiv>;
@@ -46,7 +48,7 @@ function Chart() {
             toolbar: { show: false },
             background: "transparent",
           },
-          theme: { mode: "light" },
+          theme: { mode: isDarkMode ? "dark" : "light" },
           grid: {
             show: true,
           },

@@ -9,6 +9,7 @@ export const WrapperDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 export const Title = styled.h2`
@@ -16,6 +17,7 @@ export const Title = styled.h2`
   font-weight: 600;
   padding-top: 30px;
   position: relative;
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const CoinIcon = styled(FontAwesomeIcon)`
@@ -27,8 +29,8 @@ export const CoinIcon = styled(FontAwesomeIcon)`
 export const CoinList = styled.ul`
   width: 30%;
   height: 75%;
-  background-color: black;
   overflow-y: auto;
+  padding: 10px;
 `;
 
 export const LoaderDiv = styled.div`
@@ -37,19 +39,19 @@ export const LoaderDiv = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  color: white;
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const CoinItem = styled.li`
   width: 100%;
   min-height: 50px;
   border-radius: 15px;
-  background-color: blue;
+  background-color: ${(props) => props.theme.cardColor};
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${(props) => props.theme.accentColor};
 `;
 
 export const LinkWrapper = styled(Link)`

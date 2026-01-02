@@ -5,9 +5,10 @@ export const WrapperDiv = styled.div`
 `;
 
 export const Overview = styled.div`
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: blue;
+  background-color: ${(props) => props.theme.cardColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -16,11 +17,13 @@ export const OverviewItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: ${(props) => props.theme.textColor};
 
-  span {
+  span:first-child {
     font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 5px;
+    color: ${(props) => props.theme.accentColor};
   }
 `;

@@ -15,5 +15,5 @@ export const StyledBtn = styled.button`
   width: 30px;
   height: 30px;
   font-size: 30px;
-  color: black;
+  color: ${(props) => props.theme.textColor};
 `;
