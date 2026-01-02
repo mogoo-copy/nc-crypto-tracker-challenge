@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const WrapperDiv = styled.div`
   position: fixed;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   padding: 30px;
 `;
 
-export const ThemeToggleBtn = styled.button`
+export const StyledBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;

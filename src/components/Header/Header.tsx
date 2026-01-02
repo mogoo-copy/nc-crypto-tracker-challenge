@@ -1,13 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
-import { ThemeToggleBtn, WrapperDiv } from "./style";
+import { faHouse, faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import { StyledBtn, WrapperDiv } from "./style";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+
+  const showHomeBtn = location.pathname !== "/";
+
   return (
     <WrapperDiv>
-      <ThemeToggleBtn>
+      {showHomeBtn ? (
+        <Link to="/">
+          <StyledBtn>
+            <FontAwesomeIcon icon={faHouse} />
+          </StyledBtn>
+        </Link>
+      ) : (
+        <div></div>
+      )}
+      <StyledBtn>
         <FontAwesomeIcon icon={faLightbulb} />
-      </ThemeToggleBtn>
+      </StyledBtn>
     </WrapperDiv>
   );
 }
