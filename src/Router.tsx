@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 
 import Root from "./Root";
 import Coins from "./screens/Coins";
@@ -6,7 +6,7 @@ import Coin from "./screens/Coin";
 import Chart from "./screens/Coin/tabs/Chart";
 import Price from "./screens/Coin/tabs/Price";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
