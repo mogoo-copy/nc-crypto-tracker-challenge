@@ -1,5 +1,5 @@
 import cpdbApi from "../../api/cpdbApi";
-import type { BasicCoin, CoinTickers, DetailCoin } from "./types";
+import type { BasicCoin, CoinHistory, CoinTickers, DetailCoin } from "./types";
 
 const NICO_URL = "https://ohlcv-api.nomadcoders.workers.dev?coinId=";
 
@@ -21,7 +21,30 @@ const coinsApi = cpdbApi.injectEndpoints({
     getCoinTickers: builder.query<CoinTickers, string>({
       query: (coinId) => `tickers/${coinId}`,
     }),
+    getCoinHistory: builder.query<CoinHistory[], string>({
+      queryFn: async (coinId) => {
+        try {
+          const response = await fetch(`${NICO_URL}${coinId}`);
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok.");
+          }
+
+          const data = await response.json();
+
+          return { data };
+        } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : "Unknown error";
+          return { error: { status: 500, data: errorMessage } };
+        }
+      },
+    }),
   }),
 });
 
-export const { useGetCoinsQuery, useGetCoinInfoQuery, useGetCoinTickersQuery } = coinsApi;
+export const {
+  useGetCoinsQuery,
+  useGetCoinInfoQuery,
+  useGetCoinTickersQuery,
+  useGetCoinHistoryQuery,
+} = coinsApi;

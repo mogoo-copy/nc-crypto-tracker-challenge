@@ -124,3 +124,14 @@ export interface Quote {
   ath_date: Date | null;
   percent_from_price_ath: number | null;
 }
+
+export interface CoinHistory {
+  time_open: number;
+  time_close: number;
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  volume: string;
+  market_cap: number;
+}
